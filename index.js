@@ -25,7 +25,7 @@ const drawBullet = (x) => {
   const id = `b-${x}-${Math.random().toString()}`;
   newBullet.setAttribute("src", "nyan.gif");
   newBullet.setAttribute("class", "bullet");
-  newBullet.setAttribute("style", `left:${x}px`);
+  newBullet.setAttribute("style", `left:${x}vw`);
   newBullet.setAttribute("id", id);
   bullets.push({ id: id, x: x, y: 0 });
   document.getElementById("bullets-container").appendChild(newBullet);
@@ -37,9 +37,9 @@ const removeBullet = (id) => {
 };
 
 const fireBullets = () => {
-  drawBullet((characterXPos * window.innerWidth) / 100 + 20);
-  drawBullet((characterXPos * window.innerWidth) / 100);
-  drawBullet((characterXPos * window.innerWidth) / 100 - 20);
+  drawBullet(characterXPos + (20 * 100) / window.innerWidth);
+  drawBullet(characterXPos);
+  drawBullet(characterXPos - (20 * 100) / window.innerWidth);
 };
 
 const toggleBulletFiring = () => {
@@ -58,11 +58,11 @@ const toggleBulletFiring = () => {
 
 const drawEnemy = () => {
   const newEnemy = document.createElement("img");
-  const xPos = (Math.floor(Math.random() * 100) % 12) * 12;
+  const xPos = ((Math.floor(Math.random() * 100) % 12) * 100) / 12;
   const id = `e-${xPos}-${Math.random().toString()}`;
   newEnemy.setAttribute("src", "enemy.png");
   newEnemy.setAttribute("class", "enemy");
-  newEnemy.setAttribute("style", `left:${xPos}vh`);
+  newEnemy.setAttribute("style", `left:${xPos}vw`);
   newEnemy.setAttribute("id", id);
   enemies.push({ id: id, x: xPos, y: 0, size: 1 });
   document.getElementById("enemy-container").appendChild(newEnemy);
@@ -100,7 +100,7 @@ const updatePosition = () => {
         .getElementById(bullet.id)
         .setAttribute(
           "style",
-          `left:${bullet.x}px; bottom:calc(5rem + ${bullet.y}vh)`
+          `left:${bullet.x}vw; bottom:calc(5rem + ${bullet.y}vh)`
         );
       for (const enemy of enemies) {
         if (
