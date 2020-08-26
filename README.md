@@ -11,4 +11,4 @@ All asset rights belong to original owner.
 
 ---
 
-[link to game](the3dsandwich.github.io/Nyan-Shooter/)
+[link to game](https://the3dsandwich.github.io/Nyan-Shooter/)
